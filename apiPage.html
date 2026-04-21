@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clima con ESP32!</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                color: #333;
+            }
+            h1 {
+                color: #007BFF;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Temperatura Actual en Puebla</h1>
+        <p id="tempValue">-----</p>
+        <script>
+            function updateWeather() {
+                fetch('/weather')
+                    .then(response => response.text())
+                    .then(data => 
+                        document.getElementById('tempValue').innerText = data + ' °C');
+            }
+            setInterval(updateWeather, 5000);
+        </script>
+
+    </body>
+</html>
